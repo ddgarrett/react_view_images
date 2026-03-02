@@ -58,10 +58,6 @@ function TreeNode({
       const hasToggleModifier = e.ctrlKey || e.metaKey;
       const isShift = e.shiftKey;
 
-      if (child.type === 'folder' && !hasToggleModifier && !isShift) {
-        setExpanded((prev) => !prev);
-      }
-
       onSelectNode(index, { shiftKey: isShift, ctrlKey: hasToggleModifier });
     },
     [child.type, index, onSelectNode]
@@ -71,6 +67,23 @@ function TreeNode({
     const folder = child as FolderNode;
     return (
       <li>
+        <span
+          className="folder-toggle"
+          onClick={(e) => {
+            e.stopPropagation();
+            setExpanded((prev) => !prev);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              setExpanded((prev) => !prev);
+            }
+          }}
+          role="button"
+          tabIndex={0}
+        >
+          {expanded ? '\u25BE' : '\u25B8'}
+        </span>
         <span
           className={expanded ? 'folder-open' : 'folder-icon'}
           onClick={handleClick}

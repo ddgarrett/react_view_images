@@ -46,8 +46,15 @@ li span {
   white-space: nowrap;
 }
 
-.folder-icon::before { content: '📁 '; }
-.folder-open::before { content: '📂 '; }
+/* Folder toggle triangle before folder name */
+.folder-toggle {
+  display: inline-block;
+  width: 1em;
+  margin-right: 4px;
+}
+
+.folder-icon::before { content: ''; }
+.folder-open::before { content: ''; }
 .file-icon::before { content: '📄 '; }
 .hidden { display: none; }
 
