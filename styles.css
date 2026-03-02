@@ -58,9 +58,10 @@ li span {
 .file-icon::before { content: '📄 '; }
 .hidden { display: none; }
 
-.selected { 
+.selected,
+li.selected {
   background-color: #094771; /* High-contrast selection background */
-  color: #ffffff; 
+  color: #ffffff;
   font-weight: bold;
   border-radius: 2px;
 }

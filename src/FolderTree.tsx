@@ -66,7 +66,7 @@ function TreeNode({
   if (child.type === 'folder') {
     const folder = child as FolderNode;
     return (
-      <li>
+      <li className={isSelected ? 'selected' : undefined}>
         <span
           className="folder-toggle"
           onClick={(e) => {
