@@ -50,7 +50,7 @@ function TreeNode({
 }: TreeNodeProps) {
   const index = indexByPath.get(child.path) ?? -1;
   const isSelected = selectedNodes.has(child);
-  const [expanded, setExpanded] = useState(child.type === 'folder');
+  const [expanded, setExpanded] = useState(false);
 
   const handleClick = useCallback(
     (e: React.MouseEvent) => {
