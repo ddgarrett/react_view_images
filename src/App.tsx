@@ -77,7 +77,7 @@ export default function App() {
   const clampedPage = Math.max(1, Math.min(currentPage, totalPages));
 
   const flatNodes = useMemo(
-    () => (treeData ? flattenTree(treeData) : []),
+    () => (treeData ? [treeData, ...flattenTree(treeData)] : []),
     [treeData]
   );
   const indexByPath = useMemo(() => {

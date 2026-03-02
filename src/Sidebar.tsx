@@ -51,17 +51,42 @@ export function Sidebar({
       <div className="tree-container" id="tree-container">
         {treeData ? (
           <>
-            <div
-              className="folder-open"
-              style={{ fontWeight: 'bold', cursor: 'pointer' }}
-            >
-              {treeData.name}
-            </div>
+            <ul className="root-tree">
+              <li className={selectedNodes.has(treeData) ? 'selected' : undefined}>
+                <span className="folder-toggle" aria-hidden>
+                  {'\u25BE'}
+                </span>
+                <span
+                  className="folder-open"
+                  style={{ fontWeight: 'bold' }}
+                  onClick={(e) =>
+                    onSelectNode(0, {
+                      shiftKey: e.shiftKey,
+                      ctrlKey: e.ctrlKey || e.metaKey,
+                    })
+                  }
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      onSelectNode(0, {
+                        shiftKey: e.shiftKey,
+                        ctrlKey: e.ctrlKey || e.metaKey,
+                      });
+                    }
+                  }}
+                  role="button"
+                  tabIndex={0}
+                >
+                  {treeData.name}
+                </span>
+              </li>
+            </ul>
             <FolderTree
               node={treeData}
               selectedNodes={selectedNodes}
               indexByPath={indexByPath}
               onSelectNode={onSelectNode}
+              rootIsSelected={selectedNodes.has(treeData)}
             />
           </>
         ) : null}

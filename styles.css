@@ -39,6 +39,7 @@ body, html { height: 100%; overflow: hidden; background: #1e1e1e; color: #ddd; }
 
 /* Tree Styles */
 ul { list-style-type: none; padding-left: 15px; }
+.root-tree { padding-left: 0; }
 li { margin: 4px 0; cursor: pointer; user-select: none; }
 
 /* Prevent text wrapping in the tree */
@@ -63,6 +64,13 @@ li.selected {
   background-color: #094771; /* High-contrast selection background */
   color: #ffffff;
   font-weight: bold;
+  border-radius: 2px;
+}
+
+/* When root is selected, highlight its direct children */
+ul.root-selected > li {
+  background-color: #094771;
+  color: #ffffff;
   border-radius: 2px;
 }
 

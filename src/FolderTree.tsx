@@ -9,6 +9,7 @@ interface FolderTreeProps {
     index: number,
     modifiers: { shiftKey: boolean; ctrlKey: boolean }
   ) => void;
+  rootIsSelected?: boolean;
 }
 
 export function FolderTree({
@@ -16,9 +17,10 @@ export function FolderTree({
   selectedNodes,
   indexByPath,
   onSelectNode,
+  rootIsSelected = false,
 }: FolderTreeProps) {
   return (
-    <ul>
+    <ul className={rootIsSelected ? 'root-selected' : undefined}>
       {node.children.map((child) => (
         <TreeNode
           key={child.path}
